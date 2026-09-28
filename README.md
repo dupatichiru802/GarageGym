@@ -18,6 +18,36 @@ Pick the equipment you actually have, and get a full-body workout built around i
 - Check off exercises as you complete them and hit "Log this workout" to save it to your
   workout history (stored locally), with stats and a delete option per entry.
 
+## Running it on Android
+
+There are two ways to get this on an Android phone:
+
+### 1. Install it as an app (works right now, no build tooling needed)
+
+GarageGym is an installable PWA. Open the deployed site in Chrome on Android, tap the
+menu, and choose **"Add to Home screen" / "Install app"**. It gets a home-screen icon,
+opens full-screen (no browser chrome), and works offline after the first load. This uses
+the `vite-plugin-pwa`-generated manifest and service worker — no native build required.
+
+### 2. Build a real native `.apk` (requires Android Studio / the Android SDK)
+
+The repo also has a native Android project (in `android/`), scaffolded with
+[Capacitor](https://capacitorjs.com/) — it wraps this same web app in a native shell, so
+the how-to animations and everything else work identically. Building the `.apk` needs the
+Android SDK (specifically access to Google's Maven repo, `dl.google.com`, to fetch the
+Android Gradle Plugin), which isn't available in this project's sandboxed dev environment,
+so the APK itself couldn't be produced here. To build it yourself:
+
+```bash
+npm run android:build   # builds the web app, syncs it into android/, runs gradlew assembleDebug
+# or, with Android Studio installed:
+npm run android:open    # builds + syncs, then opens the project in Android Studio
+```
+
+The output APK lands at `android/app/build/outputs/apk/debug/app-debug.apk`. Any change to
+`src/` needs `npm run android:sync` (or `android:build`/`android:open`) before it shows up
+in the native app, since Capacitor bundles a snapshot of `dist/` into the native project.
+
 ## Development
 
 ```bash
