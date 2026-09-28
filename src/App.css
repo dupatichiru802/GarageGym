@@ -157,3 +157,334 @@
   font-size: 14px;
   color: var(--text);
 }
+
+/* ---- Tabs ---- */
+
+.tab-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tab-button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* ---- Exercise card: checkbox + how-to toggle ---- */
+
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise-header {
+  align-items: center;
+}
+
+.exercise-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-done-checkbox {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.exercise-name {
+  overflow-wrap: anywhere;
+}
+
+.exercise-card.done .exercise-name {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.howto-toggle {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.howto-toggle.open {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.howto-panel {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.howto-panel .exercise-cue {
+  margin-top: 0;
+}
+
+/* ---- Log workout ---- */
+
+.log-panel {
+  text-align: center;
+}
+
+.log-button {
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.log-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.log-confirmation {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+/* ---- History ---- */
+
+.history-empty {
+  color: var(--text);
+  opacity: 0.75;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.history-stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.history-stat {
+  text-align: center;
+}
+
+.history-stat strong {
+  display: block;
+  font-size: 22px;
+  color: var(--text-h);
+}
+
+.history-stat span {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.history-entry {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.history-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.history-entry-title {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.history-entry-meta {
+  font-size: 13px;
+  color: var(--text);
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.history-delete {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.history-delete:hover {
+  border-color: #e5484d;
+  color: #e5484d;
+}
+
+.history-exercise-list {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.history-exercise-list li {
+  margin-bottom: 2px;
+}
+
+/* ---- Exercise demonstration animation ---- */
+
+.exercise-anim {
+  width: 56px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.exercise-anim .limb {
+  stroke: var(--accent);
+  stroke-width: 7;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.exercise-anim .head {
+  fill: var(--accent);
+}
+
+.exercise-anim .figure {
+  transform-box: view-box;
+  transform-origin: 50px 65px;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.exercise-anim .upper-body,
+.exercise-anim .leg-left,
+.exercise-anim .leg-right {
+  transform-box: view-box;
+  transform-origin: 50px 70px;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.exercise-anim .lower-body {
+  transform-box: view-box;
+  transform-origin: 50px 70px;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.exercise-anim .arm-left,
+.exercise-anim .arm-right {
+  transform-box: view-box;
+  transform-origin: 50px 35px;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes anim-arm-l-push { to { transform: rotate(-20deg); } }
+@keyframes anim-arm-r-push { to { transform: rotate(20deg); } }
+@keyframes anim-upper-push { to { transform: translateY(6px); } }
+.pattern-push .arm-left { animation-name: anim-arm-l-push; }
+.pattern-push .arm-right { animation-name: anim-arm-r-push; }
+.pattern-push .upper-body { animation-name: anim-upper-push; }
+
+@keyframes anim-arm-l-pull { to { transform: rotate(55deg); } }
+@keyframes anim-arm-r-pull { to { transform: rotate(-55deg); } }
+@keyframes anim-upper-pull { to { transform: translateY(-2px) rotate(-6deg); } }
+.pattern-pull .arm-left { animation-name: anim-arm-l-pull; }
+.pattern-pull .arm-right { animation-name: anim-arm-r-pull; }
+.pattern-pull .upper-body { animation-name: anim-upper-pull; }
+
+@keyframes anim-leg-l-squat { to { transform: rotate(-18deg); } }
+@keyframes anim-leg-r-squat { to { transform: rotate(18deg); } }
+@keyframes anim-upper-squat { to { transform: translateY(14px); } }
+.pattern-squat .leg-left { animation-name: anim-leg-l-squat; }
+.pattern-squat .leg-right { animation-name: anim-leg-r-squat; }
+.pattern-squat .upper-body { animation-name: anim-upper-squat; }
+
+@keyframes anim-upper-hinge { to { transform: rotate(35deg); } }
+.pattern-hinge .upper-body { animation-name: anim-upper-hinge; }
+
+@keyframes anim-leg-l-lunge { to { transform: translate(-4px, 10px) rotate(-10deg); } }
+@keyframes anim-leg-r-lunge { to { transform: translate(8px, -6px) rotate(22deg); } }
+@keyframes anim-upper-lunge { to { transform: translateY(8px); } }
+.pattern-lunge .leg-left { animation-name: anim-leg-l-lunge; }
+.pattern-lunge .leg-right { animation-name: anim-leg-r-lunge; }
+.pattern-lunge .upper-body { animation-name: anim-upper-lunge; }
+
+@keyframes anim-figure-plank { to { transform: translateY(3px); } }
+.pattern-plank .figure { animation-name: anim-figure-plank; }
+
+@keyframes anim-upper-core { to { transform: rotate(-18deg) translateY(4px); } }
+@keyframes anim-lower-core { to { transform: translateY(-5px); } }
+.pattern-core .upper-body { animation-name: anim-upper-core; }
+.pattern-core .lower-body { animation-name: anim-lower-core; }
+
+@keyframes anim-upper-twist { to { transform: rotate(22deg); } }
+.pattern-twist .upper-body { animation-name: anim-upper-twist; }
+
+@keyframes anim-arm-l-raise { to { transform: rotate(-80deg); } }
+@keyframes anim-arm-r-raise { to { transform: rotate(80deg); } }
+.pattern-raise .arm-left { animation-name: anim-arm-l-raise; }
+.pattern-raise .arm-right { animation-name: anim-arm-r-raise; }
+
+@keyframes anim-arm-l-curl { to { transform: rotate(85deg); } }
+@keyframes anim-arm-r-curl { to { transform: rotate(-85deg); } }
+.pattern-curl .arm-left { animation-name: anim-arm-l-curl; }
+.pattern-curl .arm-right { animation-name: anim-arm-r-curl; }
+
+@keyframes anim-figure-jump { to { transform: translateY(-10px); } }
+.pattern-jump .figure { animation-name: anim-figure-jump; }
+
+@media (prefers-reduced-motion: reduce) {
+  .exercise-anim .figure,
+  .exercise-anim .upper-body,
+  .exercise-anim .lower-body,
+  .exercise-anim .leg-left,
+  .exercise-anim .leg-right,
+  .exercise-anim .arm-left,
+  .exercise-anim .arm-right {
+    animation: none;
+  }
+}
