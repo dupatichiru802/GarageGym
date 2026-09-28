@@ -367,8 +367,8 @@
 /* ---- Exercise demonstration animation ---- */
 
 .exercise-anim {
-  width: 56px;
-  height: 72px;
+  width: 84px;
+  height: 108px;
   flex-shrink: 0;
 }
 
@@ -376,36 +376,25 @@
   stroke: var(--accent);
   stroke-width: 7;
   stroke-linecap: round;
+  stroke-linejoin: round;
   fill: none;
+}
+
+.exercise-anim .floor {
+  stroke: var(--border);
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 .exercise-anim .head {
   fill: var(--accent);
 }
 
-.exercise-anim .figure {
-  transform-box: view-box;
-  transform-origin: 50px 65px;
-  animation-duration: 1.2s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
+.exercise-anim .figure,
 .exercise-anim .upper-body,
-.exercise-anim .leg-left,
-.exercise-anim .leg-right {
-  transform-box: view-box;
-  transform-origin: 50px 70px;
-  animation-duration: 1.2s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
 .exercise-anim .lower-body {
   transform-box: view-box;
-  transform-origin: 50px 70px;
+  transform-origin: 50px 68px;
   animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -413,69 +402,90 @@
 }
 
 .exercise-anim .arm-left,
-.exercise-anim .arm-right {
-  transform-box: view-box;
-  transform-origin: 50px 35px;
+.exercise-anim .arm-right,
+.exercise-anim .leg-left,
+.exercise-anim .leg-right {
   animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-@keyframes anim-arm-l-push { to { transform: rotate(-20deg); } }
-@keyframes anim-arm-r-push { to { transform: rotate(20deg); } }
-@keyframes anim-upper-push { to { transform: translateY(6px); } }
+/* Push: elbow bends and the hand draws in toward the chest (press/push-up lowering). */
+@keyframes anim-arm-l-push { to { d: path('M38,27 L24,36 L32,48'); } }
+@keyframes anim-arm-r-push { to { d: path('M62,27 L76,36 L68,48'); } }
 .pattern-push .arm-left { animation-name: anim-arm-l-push; }
 .pattern-push .arm-right { animation-name: anim-arm-r-push; }
-.pattern-push .upper-body { animation-name: anim-upper-push; }
 
-@keyframes anim-arm-l-pull { to { transform: rotate(55deg); } }
-@keyframes anim-arm-r-pull { to { transform: rotate(-55deg); } }
+/* Pull: elbow drives back, hand draws up to the chest (row/pull-up). */
+@keyframes anim-arm-l-pull { to { d: path('M38,27 L32,42 L44,34'); } }
+@keyframes anim-arm-r-pull { to { d: path('M62,27 L68,42 L56,34'); } }
 @keyframes anim-upper-pull { to { transform: translateY(-2px) rotate(-6deg); } }
 .pattern-pull .arm-left { animation-name: anim-arm-l-pull; }
 .pattern-pull .arm-right { animation-name: anim-arm-r-pull; }
 .pattern-pull .upper-body { animation-name: anim-upper-pull; }
 
-@keyframes anim-leg-l-squat { to { transform: rotate(-18deg); } }
-@keyframes anim-leg-r-squat { to { transform: rotate(18deg); } }
+/* Curl: elbow stays put, the hand curls up toward the shoulder. */
+@keyframes anim-arm-l-curl { to { d: path('M38,27 L30,46 L38,30'); } }
+@keyframes anim-arm-r-curl { to { d: path('M62,27 L70,46 L62,30'); } }
+.pattern-curl .arm-left { animation-name: anim-arm-l-curl; }
+.pattern-curl .arm-right { animation-name: anim-arm-r-curl; }
+
+/* Raise: the whole arm lifts out to shoulder height. */
+@keyframes anim-arm-l-raise { to { d: path('M38,27 L18,30 L4,26'); } }
+@keyframes anim-arm-r-raise { to { d: path('M62,27 L82,30 L96,26'); } }
+.pattern-raise .arm-left { animation-name: anim-arm-l-raise; }
+.pattern-raise .arm-right { animation-name: anim-arm-r-raise; }
+
+/* Squat: hips sink, knees bend forward, feet stay planted. */
+@keyframes anim-leg-l-squat { to { d: path('M44,82 L38,92 L40,108'); } }
+@keyframes anim-leg-r-squat { to { d: path('M56,82 L62,92 L60,108'); } }
 @keyframes anim-upper-squat { to { transform: translateY(14px); } }
 .pattern-squat .leg-left { animation-name: anim-leg-l-squat; }
 .pattern-squat .leg-right { animation-name: anim-leg-r-squat; }
 .pattern-squat .upper-body { animation-name: anim-upper-squat; }
 
+/* Hinge: torso tips forward from the hip, knees stay soft. */
 @keyframes anim-upper-hinge { to { transform: rotate(35deg); } }
+@keyframes anim-leg-l-hinge { to { d: path('M44,68 L40,90 L40,108'); } }
+@keyframes anim-leg-r-hinge { to { d: path('M56,68 L60,90 L60,108'); } }
 .pattern-hinge .upper-body { animation-name: anim-upper-hinge; }
+.pattern-hinge .leg-left { animation-name: anim-leg-l-hinge; }
+.pattern-hinge .leg-right { animation-name: anim-leg-r-hinge; }
 
-@keyframes anim-leg-l-lunge { to { transform: translate(-4px, 10px) rotate(-10deg); } }
-@keyframes anim-leg-r-lunge { to { transform: translate(8px, -6px) rotate(22deg); } }
+/* Lunge: front leg steps forward and bends, back leg trails behind. */
+@keyframes anim-leg-l-lunge { to { d: path('M44,72 L34,88 L28,108'); } }
+@keyframes anim-leg-r-lunge { to { d: path('M56,72 L66,96 L74,116'); } }
 @keyframes anim-upper-lunge { to { transform: translateY(8px); } }
 .pattern-lunge .leg-left { animation-name: anim-leg-l-lunge; }
 .pattern-lunge .leg-right { animation-name: anim-leg-r-lunge; }
 .pattern-lunge .upper-body { animation-name: anim-upper-lunge; }
 
+/* Plank: an isometric hold, just a faint breathing motion. */
 @keyframes anim-figure-plank { to { transform: translateY(3px); } }
 .pattern-plank .figure { animation-name: anim-figure-plank; }
 
+/* Core: torso curls up and knees lift, like a crunch. */
 @keyframes anim-upper-core { to { transform: rotate(-18deg) translateY(4px); } }
 @keyframes anim-lower-core { to { transform: translateY(-5px); } }
+@keyframes anim-leg-l-core { to { d: path('M44,63 L46,80 L50,98'); } }
+@keyframes anim-leg-r-core { to { d: path('M56,63 L54,80 L50,98'); } }
 .pattern-core .upper-body { animation-name: anim-upper-core; }
 .pattern-core .lower-body { animation-name: anim-lower-core; }
+.pattern-core .leg-left { animation-name: anim-leg-l-core; }
+.pattern-core .leg-right { animation-name: anim-leg-r-core; }
 
+/* Twist: torso rotates side to side, hips stay square. */
 @keyframes anim-upper-twist { to { transform: rotate(22deg); } }
 .pattern-twist .upper-body { animation-name: anim-upper-twist; }
 
-@keyframes anim-arm-l-raise { to { transform: rotate(-80deg); } }
-@keyframes anim-arm-r-raise { to { transform: rotate(80deg); } }
-.pattern-raise .arm-left { animation-name: anim-arm-l-raise; }
-.pattern-raise .arm-right { animation-name: anim-arm-r-raise; }
-
-@keyframes anim-arm-l-curl { to { transform: rotate(85deg); } }
-@keyframes anim-arm-r-curl { to { transform: rotate(-85deg); } }
-.pattern-curl .arm-left { animation-name: anim-arm-l-curl; }
-.pattern-curl .arm-right { animation-name: anim-arm-r-curl; }
-
+/* Jump: the whole figure lifts off, knees tuck up. */
 @keyframes anim-figure-jump { to { transform: translateY(-10px); } }
+@keyframes anim-leg-l-jump { to { d: path('M44,72 L48,86 L46,100'); } }
+@keyframes anim-leg-r-jump { to { d: path('M56,72 L52,86 L54,100'); } }
 .pattern-jump .figure { animation-name: anim-figure-jump; }
+.pattern-jump .leg-left { animation-name: anim-leg-l-jump; }
+.pattern-jump .leg-right { animation-name: anim-leg-r-jump; }
 
 @media (prefers-reduced-motion: reduce) {
   .exercise-anim .figure,
