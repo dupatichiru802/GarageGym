@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { DifficultyPicker } from './components/DifficultyPicker'
 import { EquipmentPicker } from './components/EquipmentPicker'
+import { ExerciseLibrary } from './components/ExerciseLibrary'
 import { WorkoutHistory } from './components/WorkoutHistory'
 import { WorkoutView } from './components/WorkoutView'
 import type { EquipmentId } from './data/equipment'
@@ -11,7 +12,7 @@ import './App.css'
 const EQUIPMENT_STORAGE_KEY = 'garagegym.equipment'
 const DIFFICULTY_STORAGE_KEY = 'garagegym.difficulty'
 
-type Tab = 'generate' | 'history'
+type Tab = 'generate' | 'library' | 'history'
 
 function loadEquipment(): EquipmentId[] {
   try {
@@ -98,6 +99,13 @@ function App() {
           </button>
           <button
             type="button"
+            className={`tab-button${tab === 'library' ? ' active' : ''}`}
+            onClick={() => setTab('library')}
+          >
+            Library
+          </button>
+          <button
+            type="button"
             className={`tab-button${tab === 'history' ? ' active' : ''}`}
             onClick={() => setTab('history')}
           >
@@ -131,6 +139,12 @@ function App() {
               </section>
             )}
           </>
+        ) : tab === 'library' ? (
+          <section className="panel">
+            <h2>Exercise library</h2>
+            <p className="muted">Every exercise, grouped by muscle, with a how-to animation and reference sets.</p>
+            <ExerciseLibrary />
+          </section>
         ) : (
           <section className="panel">
             <h2>Workout history</h2>
