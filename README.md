@@ -13,6 +13,10 @@ Pick the equipment you actually have, and get a full-body workout built around i
   only exercises that match your selected equipment, plus a warm-up and cool-down.
 - Hit "Regenerate" for a fresh mix of exercises any time.
 - Your equipment and difficulty choices are remembered locally between visits.
+- Each exercise has a "Show how-to" toggle with a looping animated diagram of its movement
+  pattern (squat, push, pull, hinge, etc.) plus a form cue.
+- Check off exercises as you complete them and hit "Log this workout" to save it to your
+  workout history (stored locally), with stats and a delete option per entry.
 
 ## Development
 
@@ -26,6 +30,9 @@ npm run lint     # lint with oxlint
 ## Project structure
 
 - `src/data/equipment.ts` — the list of selectable equipment.
-- `src/data/exercises.ts` — the exercise database (muscle group, required equipment, sets/reps).
+- `src/data/exercises.ts` — the exercise database (muscle group, required equipment, sets/reps, movement pattern).
+- `src/data/movementPatterns.ts` — the movement-pattern types used to pick a how-to animation.
 - `src/lib/generateWorkout.ts` — the workout generation logic.
-- `src/components/` — UI components (equipment picker, difficulty picker, workout display).
+- `src/lib/workoutLog.ts` — localStorage-backed workout history (add/delete entries).
+- `src/components/` — UI components (equipment picker, difficulty picker, workout display,
+  exercise how-to animation, workout history).
